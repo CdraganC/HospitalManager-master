@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital manager</title>
+</head>
+<body>
+
+<h3>Patient created successfully!</h3>
+
+<div th:object = "${createPatientDto}">
+<p th:text="'Name: ' + *{name}"></p>
+<p th:text="'Age: ' + *{age}"></p>
+</div>
+
+<button onclick="window.location.href='/mvc/patient/viewAll';">
+    View the patients list
+</button>
+<p></p>
+<button onclick="window.location.href='/';">
+    Home
+</button>
+
+
+
+</body>
+</html>
