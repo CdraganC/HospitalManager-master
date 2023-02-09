@@ -1,167 +1,56 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Hospital manager</title>-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="w-50 mx-auto">-->
-
-<!--    <h2 class="text-center" th:if="${isDoctor}">Doctor dashboard</h2>-->
-<!--    <h2 class="text-center" th:if="${isPatient}">Patient dashboard</h2>-->
-
-<!--    <div class="w-50 mx-auto">-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" th:if="${isPatient}"-->
-<!--                    onclick="window.location.href='/appointment/findAllByPatient';">-->
-<!--                Future appointments-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" th:if="${isPatient}" onclick="window.location.href='/appointment/create';">-->
-<!--                Create an appointment-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" th:if="${isPatient}"-->
-<!--                    onclick="window.location.href='/appointment/findAllPreviousAppointments';">-->
-<!--                Previous Appointments-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" id="history-button" th:if="${isPatient}"-->
-<!--                    onclick="window.location.href='/medication/viewAll';">-->
-<!--                Medication history-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" id="diagnose-button" th:if="${isPatient}"-->
-<!--                    onclick="window.location.href='/medication/viewAll';">-->
-<!--                Diagnose history-->
-<!--            </button>-->
-<!--        </div>-->
-
-<!--    </div>-->
-
-<!--    <div class="w-50 mx-auto">-->
-<!--        <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" th:if="${isAdmin}"-->
-<!--                    onclick="window.location.href='/mvc/doctor/createDoctor';">-->
-<!--                Create a doctor-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/viewAll';">-->
-<!--                View all doctors-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        <div class="row d-flex content-center">-->
-<!--            <button class="btn btn-primary" onclick="window.location.href='/logout';">-->
-<!--                Logout-->
-<!--            </button>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Hospital manager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <style>
-        body {
-            background-color: black;
-        }
-
-        .btn-primary {
-            background-color: blue;
-            border-color: blue;
-        }
-
-        #history-button {
-            background-color: green;
-            border-color: green;
-        }
-
-        #diagnose-button {
-            background-color: yellow;
-            border-color: yellow;
-        }
-    </style>
 </head>
-
 <body>
-<div class="w-50 mx-auto">
+<div class="w-25 mx-auto">
+    <br/>
+    <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
+    <h2 th:if="${isDoctor}">Doctor dashboard</h2>
+    <h2 th:if="${isPatient}">Patient dashboard</h2>
 
-    <h2 class="text-center" th:if="${isDoctor}">Doctor dashboard</h2>
-    <h2 class="text-center" th:if="${isPatient}">Patient dashboard</h2>
-
-    <div class="w-50 mx-auto">
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" th:if="${isPatient}"
-                    onclick="window.location.href='/appointment/findAllByPatient';">
-                Future appointments
-            </button>
-        </div>
-        <br />
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" th:if="${isPatient}" onclick="window.location.href='/appointment/create';">
-                Create an appointment
-            </button>
-        </div>
-        <br />
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" th:if="${isPatient}"
-                    onclick="window.location.href='/appointment/findAllPreviousAppointments';">
-                Previous Appointments
-            </button>
-        </div>
-        <br />
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" id="history-button" th:if="${isPatient}"
-                    onclick="window.location.href='/medication/viewAll';">
-                Medication history
-            </button>
-        </div>
-        <br />
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" id="diagnose-button" th:if="${isPatient}"
-                    onclick="window.location.href='/diagnose/viewAll';">
-                Diagnose history
-            </button>
-        </div>
-
+    <br/><br/>
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" th:if="${isPatient}"
+                onclick="window.location.href='/appointment/findAllByPatient';">
+            View my appointments
+        </button>
     </div>
-
-    <div class="w-50 mx-auto">
-        <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" th:if="${isAdmin}"
-                    onclick="window.location.href='/mvc/doctor/createDoctor';">
-                Create a doctor
-            </button>
-        </div>
-        <br />
-
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/viewAll';">
-                View all doctors
-            </button>
-        </div>
-        </div>
+    <br/><br/>
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" th:if="${isPatient}" onclick="window.location.href='/appointment/create';">
+            Create an appointment
+        </button>
     </div>
+    <br/>
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" id="history-button" th:if="${isPatient}"
+                onclick="window.location.href='/medication/viewAll';">
+            Medication history
+        </button>
+    </div>
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/createDoctor';">
+            Create a doctor
+        </button>
+    </div>
+    <br/><br/>
+
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/viewAll';">
+            View all doctors
+        </button>
+    </div>
+    <br/><br/>
+    <div class="row d-flex content-center">
+        <button class="btn btn-primary" onclick="window.location.href='/logout';">
+            Logout
+        </button>
+    </div>
+</div>
+</body>
+</html>

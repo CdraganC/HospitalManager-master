@@ -10,15 +10,17 @@
 
 <h2> Appointments list</h2>
 
+<!--<table border="1" class="table table-striped">-->
+
 <table class="table table-striped-columns w-50">
     <thead>
     <tr>
         <th> Id</th>
-        <th style="text-align: center;">Date</th>
-        <th style="text-align: center;">Edit</th>
-        <th style="text-align: center; white-space: nowrap;">Doctor name</th>
-        <th style="text-align: center;">Specialisation</th>
-        <th style="text-align: center;">Delete</th>
+        <th> Date</th>
+        <th> Edit</th>
+        <th> Doctor name</th>
+        <th> Specialisation</th>
+        <th> Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -115,10 +117,10 @@
     function validateDate(selectedDate) {
         var dateToCompare = Date.parse(selectedDate);
         var today = new Date();
-        var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
-        var maxDate = new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
+        var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+        var maxDate = new Date(today.getFullYear(), today.getMonth() + 3, today.getDate());
         if (dateToCompare < minDate || dateToCompare > maxDate) {
-            alert("Please select a date between yestarday and 6 months from today.");
+            alert("Please select a date between tomorrow and 3 months from today.");
             return false;
         }
         return true;

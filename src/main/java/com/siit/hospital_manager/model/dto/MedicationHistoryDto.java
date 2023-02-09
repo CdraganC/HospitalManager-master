@@ -1,6 +1,5 @@
 package com.siit.hospital_manager.model.dto;
 
-import com.siit.hospital_manager.model.DiagnoseHistory;
 import com.siit.hospital_manager.model.MedicationHistory;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +24,4 @@ public class MedicationHistoryDto {
         this.medicationFrom = medicationHistory.getMedicationFrom();
         this.medicationTo = medicationHistory.getMedicationTo();
     }
-
-
 }

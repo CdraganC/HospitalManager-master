@@ -12,7 +12,7 @@ public class HomePageController {
 
     @GetMapping("/")
     public String homePage(Model model){
-        model.addAttribute("message", "Hospital Manager");
+        model.addAttribute("message", "Hospital Manager v1");
         return "index";
     }
 
@@ -24,10 +24,8 @@ public class HomePageController {
         model.addAttribute("isDoctor", isDoctor(authentication));
 
 
-        model.addAttribute("message", "Hospital Manager");
+        model.addAttribute("message", "Hospital Manager v1");
         return "dashboard/dashboard";
     }
-
-
 
 }
