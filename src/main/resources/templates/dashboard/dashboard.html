@@ -7,32 +7,48 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<div class="w-25 mx-auto">
-    <br/>
-    <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
-    <h2 th:if="${isDoctor}">Doctor dashboard</h2>
-    <h2 th:if="${isPatient}">Patient dashboard</h2>
+<div class="w-50 mx-auto">
 
-    <br/><br/>
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" th:if="${isPatient}"
-                onclick="window.location.href='/appointment/findAllByPatient';">
-            View my appointments
-        </button>
+    <h2 class="text-center" th:if="${isDoctor}">Doctor dashboard</h2>
+    <h2 class="text-center" th:if="${isPatient}">Patient dashboard</h2>
+
+    <div class="w-50 mx-auto">
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" th:if="${isPatient}"
+                    onclick="window.location.href='/appointment/findAllByPatient';">
+                Future appointments
+            </button>
+        </div>
+        <br/>
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" th:if="${isPatient}" onclick="window.location.href='/appointment/create';">
+                Create an appointment
+            </button>
+        </div>
+        <br/>
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" th:if="${isPatient}"
+                    onclick="window.location.href='/appointment/findAllPreviousAppointments';">
+                Previous Appointments
+            </button>
+        </div>
+        <br/>
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" id="history-button" th:if="${isPatient}"
+                    onclick="window.location.href='/medication/viewAll';">
+                Medication history
+            </button>
+        </div>
+        <br/>
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" onclick="window.location.href='/logout';">
+                Logout
+            </button>
+        </div>
+
     </div>
-    <br/><br/>
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" th:if="${isPatient}" onclick="window.location.href='/appointment/create';">
-            Create an appointment
-        </button>
-    </div>
-    <br/>
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" id="history-button" th:if="${isPatient}"
-                onclick="window.location.href='/medication/viewAll';">
-            Medication history
-        </button>
-    </div>
+
+    <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
     <div class="row d-flex content-center">
         <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/createDoctor';">
             Create a doctor
@@ -45,12 +61,7 @@
             View all doctors
         </button>
     </div>
-    <br/><br/>
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" onclick="window.location.href='/logout';">
-            Logout
-        </button>
-    </div>
+
 </div>
 </body>
 </html>
