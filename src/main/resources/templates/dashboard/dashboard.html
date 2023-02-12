@@ -39,7 +39,26 @@
                 Medication history
             </button>
         </div>
+
+    </div>
+
+    <div class="w-50 mx-auto">
+        <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" th:if="${isAdmin}"
+                    onclick="window.location.href='/mvc/doctor/createDoctor';">
+                Create a doctor
+            </button>
+        </div>
         <br/>
+
+        <div class="row d-flex content-center">
+            <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/viewAll';">
+                View all doctors
+            </button>
+        </div>
+        <br/>
+
         <div class="row d-flex content-center">
             <button class="btn btn-primary" onclick="window.location.href='/logout';">
                 Logout
@@ -47,21 +66,5 @@
         </div>
 
     </div>
-
-    <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/createDoctor';">
-            Create a doctor
-        </button>
-    </div>
-    <br/><br/>
-
-    <div class="row d-flex content-center">
-        <button class="btn btn-primary" th:if="${isAdmin}" onclick="window.location.href='/mvc/doctor/viewAll';">
-            View all doctors
-        </button>
-    </div>
-
-</div>
 </body>
 </html>
