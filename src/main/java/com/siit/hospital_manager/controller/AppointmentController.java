@@ -22,13 +22,13 @@ public class AppointmentController {
     private final AppointmentService appointmentService;
     private final DoctorService doctorService;
 
-    @GetMapping("/findAllByPatient")
-    public String findAllByPatient(Model model, Principal principal) {
-        List<AppointmentDto> appointments = appointmentService.findAllByUserName(principal.getName());
-        model.addAttribute("appointments", appointments);
-
-        return "appointment/viewAll";
-    }
+//    @GetMapping("/findAllByPatient")
+//    public String findAllByPatient(Model model, Principal principal) {
+//        List<AppointmentDto> appointments = appointmentService.findAllByUserName(principal.getName());
+//        model.addAttribute("appointments", appointments);
+//
+//        return "appointment/viewAll";
+//    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -54,6 +54,22 @@ public class AppointmentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateAppointment(@PathVariable Integer id, @Valid @RequestBody UpdateAppointmentDto updateAppointmentDto, Principal principal){
         appointmentService.updateAppointment(id, updateAppointmentDto, principal.getName());
+    }
+
+    @GetMapping("/findAllByPatient")
+    public String findAllFutureAppointmentsByPatient(Model model, Principal principal) {
+        List<AppointmentDto> appointments = appointmentService.findFutureByUserName(principal.getName());
+        model.addAttribute("appointments", appointments);
+
+        return "appointment/viewAll";
+    }
+
+    @GetMapping("/findAllPreviousAppointments")
+    public String findAllPreviousAppointmentsByPatient(Model model, Principal principal) {
+        List<AppointmentDto> appointments = appointmentService.findPreviousByUserName(principal.getName());
+        model.addAttribute("appointments", appointments);
+
+        return "appointment/viewAll";
     }
 
 }

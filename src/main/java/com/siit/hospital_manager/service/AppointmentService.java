@@ -21,6 +21,8 @@ public class AppointmentService {
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
 
+    LocalDateTime now = LocalDateTime.now();
+
     public List<AppointmentDto> findAllByPatientId(Integer id) {
         List<Appointment> appointments = appointmentsRepository.findAllByPatientId(id);
 
@@ -87,5 +89,29 @@ public class AppointmentService {
 
         appointment.setDate(newDate);
         appointmentsRepository.save(appointment);
+    }
+
+    public List<AppointmentDto> findFutureByUserName(String userName) {
+        User patient = userRepository.findByUserName(userName).orElseThrow(
+                () -> new BusinessException(HttpStatus.NOT_FOUND, "User not found")
+        );
+
+        List<Appointment> appointments = appointmentsRepository.findAllByPatientId(patient.getId());
+        return appointments.stream()
+                .filter(appointment -> appointment.getDate().isAfter(now))
+                .map(Appointment::toDto)
+                .toList();
+    }
+
+    public List<AppointmentDto> findPreviousByUserName(String userName) {
+        User patient = userRepository.findByUserName(userName).orElseThrow(
+                () -> new BusinessException(HttpStatus.NOT_FOUND, "User not found")
+        );
+
+        List<Appointment> appointments = appointmentsRepository.findAllByPatientId(patient.getId());
+        return appointments.stream()
+                .filter(appointment -> appointment.getDate().isBefore(now))
+                .map(Appointment::toDto)
+                .toList();
     }
 }
