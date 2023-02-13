@@ -14,7 +14,7 @@ public class CreatePatientDto {
     @Pattern(regexp = "[A-Z][a-z]{1,15}+ [A-Z][a-z]{1,15}+")
     @Schema(description = "This is the patients full name. Must start with uppercase letter for each word")
     private String name;
-    @Range(min = 1, max = 120)
+    @Range(min = 18, max = 80)
     @NotNull(message = "Age can't be null")
     private Integer age;
     @NotNull(message = "UserName can not be null")
