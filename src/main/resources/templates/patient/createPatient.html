@@ -7,42 +7,44 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<div class="w-50 mx-auto content-between-l">
-    <br/>
-    <h2>Create a patient account with us</h2>
-    <div>
-        <form th:object="${patient}" th:action="@{/mvc/patient/submitCreatePatientForm}" method="post">
-            <div class="mb-0 w-75 p-1">
-                <label class="form-label" for="userName">UserName:</label>
-                <input class="form-control" type="text" id="userName" th:field="*{userName}"/>
-            </div>
-            <div class="mb-0 w-75 p-1">
-                <label class="form-label" for="userName">Password:</label>
-                <input class="form-control" type="password" id="password" th:field="*{password}"/>
-            </div>
-            <div class="mb-0 w-75 p-1">
-                <label class="form-label" for="name">Name:</label>
-                <input class="form-control" type="text" id="name" th:field="*{name}"/>
-            </div>
-            <div class="mb-0 w-75 p-1">
-                <label class="form-label" for="age">Age:</label>
-                <input class="form-control" type="number" id="age" th:field="*{age}"/>
-            </div>
-            <div class="mb-0 w-75 p-1">
-                <label class="form-label" for="phoneNumber">Phone number:</label>
-                <input class="form-control" type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
-            </div>
-            <div class="w-75 p-3 text-end">
-                <input type="submit" value="Submit" class="btn btn-primary "/>
-                <br>
-            </div>
-            <div th:if="${#fields.hasAnyErrors()}">
-                <ul>
-                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
-                </ul>
-            </div>
-        </form>
+<div class="background"
+     style="background-image: url('https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2JlY29taW5nLWRvY3Rvci5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH19fQ==');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
+    <div class="w-50 mx-auto content-between-l">
+        <br/>
+        <h2>Create a patient account with us</h2>
+        <div>
+            <form th:object="${patient}" th:action="@{/mvc/patient/submitCreatePatientForm}" method="post">
+                <div class="mb-0 w-75 p-1">
+                    <label class="form-label" for="userName">UserName:</label>
+                    <input class="form-control" type="text" id="userName" th:field="*{userName}"/>
+                </div>
+                <div class="mb-0 w-75 p-1">
+                    <label class="form-label" for="userName">Password:</label>
+                    <input class="form-control" type="password" id="password" th:field="*{password}"/>
+                </div>
+                <div class="mb-0 w-75 p-1">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" th:field="*{name}"/>
+                </div>
+                <div class="mb-0 w-75 p-1">
+                    <label class="form-label" for="age">Age:</label>
+                    <input class="form-control" type="number" id="age" th:field="*{age}"/>
+                </div>
+                <div class="mb-0 w-75 p-1">
+                    <label class="form-label" for="phoneNumber">Phone number:</label>
+                    <input class="form-control" type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
+                </div>
+                <div class="w-75 p-3 text-end">
+                    <input type="submit" value="Submit" class="btn btn-primary "/>
+                    <br>
+                </div>
+                <div th:if="${#fields.hasAnyErrors()}">
+                    <ul>
+                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 </html>

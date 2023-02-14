@@ -5,22 +5,22 @@
     <title>Hospital manager</title>
 </head>
 <body>
+<div class="background"
+     style="background-image: url('https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2JlY29taW5nLWRvY3Rvci5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH19fQ==');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
+    <h3>Patient created successfully!</h3>
 
-<h3>Patient created successfully!</h3>
+    <div th:object="${createPatientDto}">
+        <p th:text="'Name: ' + *{name}"></p>
+        <p th:text="'Age: ' + *{age}"></p>
+    </div>
 
-<div th:object = "${createPatientDto}">
-<p th:text="'Name: ' + *{name}"></p>
-<p th:text="'Age: ' + *{age}"></p>
-</div>
-
-<button onclick="window.location.href='/mvc/patient/viewAll';">
-    View the patients list
-</button>
-<p></p>
-<button onclick="window.location.href='/';">
-    Home
-</button>
-
+    <button onclick="window.location.href='/mvc/patient/viewAll';">
+        View the patients list
+    </button>
+    <p></p>
+    <button onclick="window.location.href='/';">
+        Home
+    </button>
 
 
 </body>
