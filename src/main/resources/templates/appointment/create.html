@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Create appointment</title>
+</head>
+<body>
+<div class="w-50 mx-auto content-between-l">
+    <br/>
+    <h2>Create an appointment</h2>
+    <div>
+        <form th:object="${appointment}" th:action="@{/appointment/submitCreateAppointmentForm}" method="post">
+            <div class="mb-1 w-75 p-3">
+                <label class="form-label" for="specialisation">Doctor</label>
+                <select class="form-control" id="specialisation" th:field="*{doctorId}">
+                    <option th:each="doctor : ${doctors}" th:value="${doctor.id}"
+                            th:text="${doctor.name} + ' - ' + ${doctor.specialisation.toUpperCase()}"></option>
+                </select>
+
+                <label class="form-label" for="date">Date and Time:</label>
+                <input class="form-control" type="datetime-local" id="date" th:field="*{date}" onchange="validateDate()"/>
+            </div>
+            <div class="w-75 p-3 text-end">
+                <input type="submit" value="Submit" class="btn btn-primary "/>
+                <br>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+<script>
+    function validateDate() {
+        var today = new Date();
+        var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+        var maxDate = new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
+        var dateInput = document.getElementById("date");
+        var selectedDate = new Date(dateInput.value);
+        if (selectedDate < minDate || selectedDate > maxDate) {
+            alert("Please select a date between yesterday and 6 months from today.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<p></p>
+
+<button onclick="window.location.href='/dashboard';">
+    Main menu
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
