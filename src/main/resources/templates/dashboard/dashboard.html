@@ -73,6 +73,13 @@
 
             <br/>
             <div class="row d-flex content-center">
+                <button class="btn btn-primary" th:if="${isDoctor}"
+                        onclick="window.location.href='/appointment/findAllByDoctor';">
+                    View all appointments
+                </button>
+            </div>
+            <br/>
+            <div class="row d-flex content-center">
                 <button class="btn btn-primary" onclick="window.location.href='/logout';">
                     Logout
                 </button>

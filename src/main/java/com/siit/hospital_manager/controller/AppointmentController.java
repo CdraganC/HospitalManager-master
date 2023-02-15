@@ -25,8 +25,8 @@ public class AppointmentController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteAppointmentById(@PathVariable Integer id, Principal principal){
-         appointmentService.deleteAppointmentByIdAndPatient(id, principal.getName());
+    public void deleteAppointmentById(@PathVariable Integer id, Principal principal) {
+        appointmentService.deleteAppointmentByIdAndPatient(id, principal.getName());
     }
 
     @GetMapping("/create")
@@ -38,14 +38,14 @@ public class AppointmentController {
     }
 
     @PostMapping("/submitCreateAppointmentForm")
-    public String submitCreateAppointmentForm(@Valid CreateAppointmentDto createAppointmentDto, Principal principal){
+    public String submitCreateAppointmentForm(@Valid CreateAppointmentDto createAppointmentDto, Principal principal) {
         appointmentService.createAppointment(createAppointmentDto, principal.getName());
         return "redirect:/appointment/findAllByPatient";
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateAppointment(@PathVariable Integer id, @Valid @RequestBody UpdateAppointmentDto updateAppointmentDto, Principal principal){
+    public void updateAppointment(@PathVariable Integer id, @Valid @RequestBody UpdateAppointmentDto updateAppointmentDto, Principal principal) {
         appointmentService.updateAppointment(id, updateAppointmentDto, principal.getName());
     }
 
@@ -63,6 +63,14 @@ public class AppointmentController {
         model.addAttribute("appointments", appointments);
 
         return "appointment/previousAll";
+    }
+
+    @GetMapping("/findAllByDoctor")
+    public String findAllByDoctor(Model model, Principal principal) {
+        List<AppointmentDto> appointments = appointmentService.findAllByDoctor(principal.getName());
+        model.addAttribute("appointments", appointments);
+
+        return "appointment/viewAppointmentsByDoctor";
     }
 
 }
