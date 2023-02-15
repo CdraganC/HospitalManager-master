@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/public", "/api-docs/**", "/swagger-ui/**",
                         "/actuator/**", "/mvc/patient/create", "/validationError.html", "/error",
                         "/favicon.ico", "/mvc/patient/submitCreatePatientForm", "/entityExistsError.html", "/static/**").permitAll()
-                .requestMatchers("/dashboard/**", "/dashboard", "/appointment/**","/medication/**").hasAnyRole("PATIENT", "ADMIN", "DOCTOR")
+                .requestMatchers("/dashboard/**", "/dashboard", "/appointment/**","/medication/**", "/diagnose/**").hasAnyRole("PATIENT", "ADMIN", "DOCTOR")
                 .requestMatchers("/**").hasRole("ADMIN")
                 .and()
                 .logout()
