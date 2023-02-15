@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <title>Diagnose list</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Diagnose list</title>
 </head>
 <body>
+<div class="background"
+     style="background-image: url('https://cdn.britannica.com/29/123229-050-4EE13335/stethoscopes-rubber-tubing-sounds-patient-ears-physician.jpg');  background-size: cover; background-position: center bottom; height: 100vh; width: 100%;">
 
-<h2> Diagnose list</h2>
-
-
-
-<table class="table table-striped-columns">
-  <thead>
-  <tr>
-    <th> Id </th>
-    <th> Diagnose</th>
-    <th> Name</th>
-    <th> Description</th>
+    <h2> Diagnose list</h2>
 
 
+    <table class="table table-striped-columns">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> Diagnose</th>
+            <th> Name</th>
+            <th> Description</th>
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:if="${diagnoses.empty}">
-    <td colspan="2"> No diagnose registered </td>
-  </tr>
-  <tr th:each="diagnose : ${diagnoses}">
-    <td><span th:text="${diagnose.id}"> Id </span></td>
-    <td><span th:text="${diagnose.diagnose}"> Diagnose </span></td>
-    <td><span th:text="${diagnose.name}"> Name </span></td>
-    <td><span th:text="${diagnose.description}"> Description </span></td>
 
-  </tr>
-  </tbody>
-</table>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${diagnoses.empty}">
+            <td colspan="2"> No diagnose registered</td>
+        </tr>
+        <tr th:each="diagnose : ${diagnoses}">
+            <td><span th:text="${diagnose.id}"> Id </span></td>
+            <td><span th:text="${diagnose.diagnose}"> Diagnose </span></td>
+            <td><span th:text="${diagnose.name}"> Name </span></td>
+            <td><span th:text="${diagnose.description}"> Description </span></td>
 
-<p></p>
+        </tr>
+        </tbody>
+    </table>
 
-<button onclick="window.location.href='/dashboard';">
-  Main menu
-</button>
+    <p></p>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <button onclick="window.location.href='/dashboard';">
+        Main menu
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
 
 </body>
 </html>

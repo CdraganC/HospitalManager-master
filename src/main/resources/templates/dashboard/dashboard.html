@@ -21,6 +21,7 @@
                     Future appointments
                 </button>
             </div>
+
             <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" th:if="${isPatient}"
@@ -28,6 +29,7 @@
                     Create an appointment
                 </button>
             </div>
+
             <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" th:if="${isPatient}"
@@ -35,6 +37,7 @@
                     Previous Appointments
                 </button>
             </div>
+
             <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" id="history-button" th:if="${isPatient}"
@@ -44,7 +47,6 @@
             </div>
 
         </div>
-
         <div class="w-50 mx-auto">
             <h2 class="text-center" th:if="${isAdmin}">Admin dashboard</h2>
             <div class="row d-flex content-center">
@@ -53,15 +55,14 @@
                     Create a doctor
                 </button>
             </div>
-            <br/>
 
+            <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" th:if="${isAdmin}"
                         onclick="window.location.href='/mvc/doctor/viewAll';">
                     View all doctors
                 </button>
             </div>
-            <br/>
 
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" id="diagnose-button" th:if="${isPatient}"
@@ -69,6 +70,7 @@
                     Diagnose history
                 </button>
             </div>
+
             <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" onclick="window.location.href='/logout';">
@@ -76,7 +78,6 @@
                 </button>
             </div>
         </div>
-
     </div>
 </div>
 </body>
