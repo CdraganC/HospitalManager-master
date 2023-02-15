@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Hospital manager</title>
@@ -62,6 +62,14 @@
                 </button>
             </div>
             <br/>
+
+            <div class="row d-flex content-center">
+                <button class="btn btn-primary" id="diagnose-button" th:if="${isPatient}"
+                        onclick="window.location.href='/diagnose/viewAll';">
+                    Diagnose history
+                </button>
+            </div>
+            <br/>
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" onclick="window.location.href='/logout';">
                     Logout
@@ -70,5 +78,6 @@
         </div>
 
     </div>
+</div>
 </body>
 </html>
