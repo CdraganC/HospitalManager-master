@@ -4,6 +4,7 @@ import com.siit.hospital_manager.exception.BusinessException;
 import com.siit.hospital_manager.model.*;
 import com.siit.hospital_manager.model.dto.*;
 import com.siit.hospital_manager.repository.*;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -111,6 +112,15 @@ public class AppointmentService {
         List<Appointment> appointments = appointmentsRepository.findAllByPatientId(patient.getId());
         return appointments.stream()
                 .filter(appointment -> appointment.getDate().isBefore(now))
+                .map(Appointment::toDto)
+                .toList();
+    }
+
+    public List<AppointmentDto> findAllByDoctor(String userName) {
+        User doctor = userRepository.findByUserName(userName).orElseThrow(
+                () -> new BusinessException(HttpStatus.NOT_FOUND, "User not found"));
+        List<Appointment> appointments = appointmentsRepository.findAllByDoctorId(doctor.getId());
+        return appointments.stream()
                 .map(Appointment::toDto)
                 .toList();
     }

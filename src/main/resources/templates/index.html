@@ -7,27 +7,28 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-
-<div class="w-50 mx-auto">
-
-    <h2 class="text-center" th:text="${message}"></h2>
-
-    <br/>
+<div class="background"
+     style="background-image: url('https://whyy.org/wp-content/uploads/2022/06/riddle-hospital-media-pa-768x458.png');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
     <div class="w-50 mx-auto">
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" onclick="window.location.href='/dashboard';">
-                Sign in
-            </button>
-        </div>
+
+        <h2 class="text-center" th:text="${message}"></h2>
 
         <br/>
-        <div class="row d-flex content-center">
-            <button class="btn btn-primary" onclick="window.location.href='/mvc/patient/create';">
-                Create a new account
-            </button>
-        </div>
-    </div>
+        <div class="w-50 mx-auto">
+            <div class="row d-flex content-center">
+                <button class="btn btn-primary" onclick="window.location.href='/dashboard';">
+                    Sign in
+                </button>
+            </div>
 
-</div>
+            <br/>
+            <div class="row d-flex content-center">
+                <button class="btn btn-primary" onclick="window.location.href='/mvc/patient/create';">
+                    Create a new account
+                </button>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

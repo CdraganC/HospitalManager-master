@@ -7,28 +7,31 @@
     <title>Create appointment</title>
 </head>
 <body>
-<div class="w-50 mx-auto content-between-l">
-    <br/>
-    <h2>Create an appointment</h2>
-    <div>
-        <form th:object="${appointment}" th:action="@{/appointment/submitCreateAppointmentForm}" method="post">
-            <div class="mb-1 w-75 p-3">
-                <label class="form-label" for="specialisation">Doctor</label>
-                <select class="form-control" id="specialisation" th:field="*{doctorId}">
-                    <option th:each="doctor : ${doctors}" th:value="${doctor.id}"
-                            th:text="${doctor.name} + ' - ' + ${doctor.specialisation.toUpperCase()}"></option>
-                </select>
+<div class="background"
+     style="background-image: url('https://build-valderrama.s3.amazonaws.com/wp-content/uploads/2018/04/16151555/AdobeStock_118993522.jpeg');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
+    <div class="w-50 mx-auto content-between-l">
+        <br/>
+        <h2>Create an appointment</h2>
+        <div>
+            <form th:object="${appointment}" th:action="@{/appointment/submitCreateAppointmentForm}" method="post">
+                <div class="mb-1 w-75 p-3">
+                    <label class="form-label" for="specialisation">Doctor</label>
+                    <select class="form-control" id="specialisation" th:field="*{doctorId}">
+                        <option th:each="doctor : ${doctors}" th:value="${doctor.id}"
+                                th:text="${doctor.name} + ' - ' + ${doctor.specialisation.toUpperCase()}"></option>
+                    </select>
 
-                <label class="form-label" for="date">Date and Time:</label>
-                <input class="form-control" type="datetime-local" id="date" th:field="*{date}" onchange="validateDate()"/>
-            </div>
-            <div class="w-75 p-3 text-end">
-                <input type="submit" value="Submit" class="btn btn-primary "/>
-                <br>
-            </div>
-        </form>
+                    <label class="form-label" for="date">Date and Time:</label>
+                    <input class="form-control" type="datetime-local" id="date" th:field="*{date}"
+                           onchange="validateDate()"/>
+                </div>
+                <div class="w-75 p-3 text-end">
+                    <input type="submit" value="Submit" class="btn btn-primary "/>
+                    <br>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 
 <script>

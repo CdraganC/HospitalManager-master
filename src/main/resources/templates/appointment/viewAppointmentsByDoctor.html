@@ -9,13 +9,15 @@
 <body>
 <div class="background"
      style="background-image: url('https://build-valderrama.s3.amazonaws.com/wp-content/uploads/2018/04/16151555/AdobeStock_118993522.jpeg');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
-    <h2> Previous appointments list</h2>
+
+    <h2> Appointments list</h2>
 
     <table class="table table-striped-columns w-50">
         <thead>
         <tr>
             <th> Id</th>
             <th style="text-align: center;">Date</th>
+            <th style="text-align: center;">Edit</th>
             <th style="text-align: center; white-space: nowrap;">Doctor name</th>
             <th style="text-align: center;">Specialisation</th>
             <th style="text-align: center;">Delete</th>
@@ -28,6 +30,9 @@
         <tr th:each="appointment : ${appointments}">
             <td class="appointmentId" th:text="${appointment.id}"> Id</td>
             <td th:text="${appointment.date}" class="appointmentDate"> Date</td>
+            <td>
+                <button class="edit-appointment-button">Change date</button>
+            </td>
             <td th:text="${appointment.doctor.name}"> Name</td>
             <td th:text="${appointment.doctor.specialisation}"> Name</td>
             <td>
@@ -68,5 +73,59 @@
             });
         });
     </script>
+
+
+    <script>
+        const editButtons = document.querySelectorAll('.edit-appointment-button');
+        editButtons.forEach(function (editButton) {
+            editButton.addEventListener("click", function () {
+                const appointmentRow = this.parentNode.parentNode;
+                let date = new Date();
+                date.setHours(date.getHours() + 25);
+                const appointmentDate = appointmentRow.querySelector(".appointmentDate");
+                appointmentDate.innerHTML = `
+      <input type="date" class="form-control appointmentDateInput" value="${date.toISOString().split('T')[0]}">
+      <input type="time" class="form-control appointmentTimeInput" value="${date.toTimeString().split(' ')[0]}">
+    `;
+                this.style.display = "none";
+                const saveButton = document.createElement("button");
+                saveButton.classList.add("save-appointment-button");
+                saveButton.innerHTML = "Save";
+                this.parentNode.appendChild(saveButton);
+                saveButton.addEventListener("click", function () {
+                    const appointmentId = appointmentRow.querySelector(".appointmentId").textContent;
+                    const newDate = `${appointmentRow.querySelector(".appointmentDateInput").value}T${appointmentRow.querySelector(".appointmentTimeInput").value}.00`;
+                    if (validateDate(newDate)) {
+                        fetch('/appointment/' + appointmentId, {
+                            method: 'PUT',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({date: newDate})
+                        }).then(function (response) {
+                            if (response.ok) {
+                                alert("Appointment date changed successfully");
+                                location.reload(); // Reload the page to update the table
+                            } else {
+                                alert("Error changing appointment date");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function validateDate(selectedDate) {
+            var dateToCompare = Date.parse(selectedDate);
+            var today = new Date();
+            var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+            var maxDate = new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
+            if (dateToCompare < minDate || dateToCompare > maxDate) {
+                alert("Please select a date between yestarday and 6 months from today.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </body>
 </html>

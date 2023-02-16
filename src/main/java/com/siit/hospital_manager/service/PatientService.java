@@ -67,6 +67,4 @@ public class PatientService {
         }
         patientRepository.save(patient);
     }
-
-    // same for delete
 }
