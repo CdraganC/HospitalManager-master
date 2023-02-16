@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
+
 public class CreateMedicationHistoryDto {
        private Integer id;
         private String medication;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Create a doctor</title>
+  <title>Add Medication</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -10,54 +10,55 @@
 <div class="background"
      style="background-image: url('https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2JlY29taW5nLWRvY3Rvci5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH19fQ==');  background-size: cover; background-position: center center; height: 100vh; width: 100%;">
   <div class="w-50 mx-auto content-between-l">
-<!--    <br/>-->
-<!--    <h2>Add medication</h2>-->
-<!--    <div>-->
-<!--      <form th:object="${medication}" th:action="@{/medication/create/patientId" method="post">-->
-<!--        <div class="mb-1 w-75 p-3">-->
-<!--          <label class="form-label" for="name">Drug Name:</label>-->
-<!--          <input class="form-control" type="text" id="name" th:field="*{drugName}"/>-->
-<!--        </div>-->
-<!--        <div class="mb-1 w-75 p-3">-->
-<!--          <label class="form-label" for="medication">Medication:</label>-->
-<!--          <input class="form-control" type="text" id="medication" th:field="*{medication}"/>-->
-<!--        </div>-->
-<!--        <div class="mb-1 w-75 p-3">-->
-<!--          <label class="form-label" for="medicationFrom">Medication From</label>-->
-<!--          <input class="form-control" type="date" id="medicationFrom" th:field="*{medicationFrom}" />-->
-<!--        </div>-->
-<!--        <div class="mb-1 w-75 p-3">-->
-<!--          <label class="form-label" for="medicationTo">Medication To:</label>-->
-<!--          <input class="form-control" type="date" id="medicationTo" th:field="*{medicationTo}"  />-->
-<!--        </div>-->
-<!--        <div class="w-75 p-3 text-end">-->
-<!--          <input type="submit" value="Submit" class="btn btn-primary "/>-->
-<!--          <br>-->
     <br/>
     <h2>Add medication</h2>
     <div>
-      <form>
+      <form th:object="${medications}" th:action="@{/create/patientId}" method="post">
         <div class="mb-1 w-75 p-3">
           <label class="form-label" for="name">Drug Name:</label>
-          <input class="form-control" type="text" id="name" />
+          <input class="form-control" type="text" id="name" th:field="*{drugName}"/>
         </div>
         <div class="mb-1 w-75 p-3">
           <label class="form-label" for="medication">Medication:</label>
-          <input class="form-control" type="text" id="medication" />
+          <input class="form-control" type="text" id="medication" th:field="*{medication}"/>
         </div>
         <div class="mb-1 w-75 p-3">
           <label class="form-label" for="medicationFrom">Medication From</label>
-          <input class="form-control" type="date" id="medicationFrom" />
+          <input class="form-control" type="date" id="medicationFrom" th:field="*{medicationFrom}"/>
         </div>
         <div class="mb-1 w-75 p-3">
           <label class="form-label" for="medicationTo">Medication To:</label>
-          <input class="form-control" type="date" id="medicationTo" />
+          <input class="form-control" type="date" id="medicationTo" th:field="*{medicationTo}"/>
         </div>
         <div class="w-75 p-3 text-end">
           <input type="submit" value="Submit" class="btn btn-primary "/>
           <br>
+<!--          <br/>-->
+<!--          <h2>Add medication</h2>-->
+<!--          <div>-->
+<!--            <form>-->
+<!--              <div class="mb-1 w-75 p-3">-->
+<!--                <label class="form-label" for="name">Drug Name:</label>-->
+<!--                <input class="form-control" type="text" id="name"/>-->
+<!--              </div>-->
+<!--              <div class="mb-1 w-75 p-3">-->
+<!--                <label class="form-label" for="medication">Medication:</label>-->
+<!--                <input class="form-control" type="text" id="medication"/>-->
+<!--              </div>-->
+<!--              <div class="mb-1 w-75 p-3">-->
+<!--                <label class="form-label" for="medicationFrom">Medication From</label>-->
+<!--                <input class="form-control" type="date" id="medicationFrom"/>-->
+<!--              </div>-->
+<!--              <div class="mb-1 w-75 p-3">-->
+<!--                <label class="form-label" for="medicationTo">Medication To:</label>-->
+<!--                <input class="form-control" type="date" id="medicationTo"/>-->
+<!--              </div>-->
+<!--              <div class="w-75 p-3 text-end">-->
+<!--                <input type="submit" value="Submit" class="btn btn-primary "/>-->
+<!--                <br>-->
         </div>
       </form>
+    </div>
     </div>
   </div>
 </body>

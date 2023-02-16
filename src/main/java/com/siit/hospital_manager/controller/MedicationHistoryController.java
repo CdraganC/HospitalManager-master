@@ -45,7 +45,7 @@ public class MedicationHistoryController {
 
     @GetMapping("/create/{patientId}")
     public String createMedication (Model model, @PathVariable("patientId") Integer patientId) {
-        model.addAttribute("medication", CreateMedicationHistoryDto.builder().build());
+        model.addAttribute("medications", CreateMedicationHistoryDto.builder().build());
         return "/medication/create";
     }
 
