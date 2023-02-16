@@ -67,7 +67,7 @@
             <div class="row d-flex content-center">
                 <button class="btn btn-primary" id="diagnose-button" th:if="${isPatient}"
                         onclick="window.location.href='/diagnose/viewAll';">
-                    Diagnose history
+                    Diagnosis history
                 </button>
             </div>
 
@@ -76,6 +76,14 @@
                 <button class="btn btn-primary" th:if="${isDoctor}"
                         onclick="window.location.href='/appointment/findAllByDoctor';">
                     View all appointments
+                </button>
+            </div>
+
+            <br/>
+            <div class="row d-flex content-center">
+                <button class="btn btn-primary" th:if="${isDoctor}"
+                        onclick="window.location.href='/mvc/patient/viewAll';">
+                    Add medication
                 </button>
             </div>
             <br/>

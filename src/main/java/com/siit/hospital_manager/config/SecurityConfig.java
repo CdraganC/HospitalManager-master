@@ -25,7 +25,7 @@ public class SecurityConfig {
                         "/actuator/**", "/mvc/patient/create", "/validationError.html", "/error",
                         "/favicon.ico", "/mvc/patient/submitCreatePatientForm", "/entityExistsError.html", "/static/**").permitAll()
                 .requestMatchers("/dashboard/**", "/dashboard", "/appointment/**","/medication/**", "/diagnose/**").hasAnyRole("PATIENT", "ADMIN", "DOCTOR")
-                .requestMatchers("/**").hasRole("ADMIN")
+                .requestMatchers("/**").hasAnyRole("ADMIN", "DOCTOR")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")

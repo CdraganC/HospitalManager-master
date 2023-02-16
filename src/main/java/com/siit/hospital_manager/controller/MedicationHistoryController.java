@@ -2,6 +2,8 @@ package com.siit.hospital_manager.controller;
 
 import com.siit.hospital_manager.config.MyUserDetailsService;
 import com.siit.hospital_manager.config.SecurityUtils;
+import com.siit.hospital_manager.model.dto.CreateAppointmentDto;
+import com.siit.hospital_manager.model.dto.CreateMedicationHistoryDto;
 import com.siit.hospital_manager.model.dto.MedicationHistoryDto;
 import com.siit.hospital_manager.service.MedicationHistoryService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -37,6 +41,19 @@ public class MedicationHistoryController {
         }
         else { throw new Exception ("User not found");}
         return "/medication/viewAll";
+    }
+
+    @GetMapping("/create/{patientId}")
+    public String createMedication (Model model, @PathVariable("patientId") Integer patientId) {
+        model.addAttribute("medication", CreateMedicationHistoryDto.builder().build());
+        return "/medication/create";
+    }
+
+    @PostMapping("/create/{patientId}")
+    public String create(CreateMedicationHistoryDto medicationHistoryDto, @PathVariable("patientId") Integer patientId) {
+    medicationHistoryService.addMedicationHistory(medicationHistoryDto, patientId);
+
+        return "medication/create";
     }
 
 }

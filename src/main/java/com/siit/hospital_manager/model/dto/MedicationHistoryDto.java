@@ -23,4 +23,5 @@ public class MedicationHistoryDto {
         this.medicationFrom = medicationHistory.formattedDateFromMethod();
         this.medicationTo = medicationHistory.formattedDateToMethod();
     }
+
 }
